@@ -1,6 +1,6 @@
 {
   "name": "agata-mobile-front",
-  "app_id": "",
+  "app_id": "b030a50e",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

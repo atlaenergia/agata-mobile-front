@@ -1,0 +1,51 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Entrar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-grid>
+
+        <ion-row>
+          <ion-col col-6 offset-3>
+            
+            <img src="assets/imgs/Orange.png"/>
+            
+          </ion-col>
+        </ion-row>
+    
+        <ion-row>
+          <ion-col>
+            <form (submit)="doLogin()" [formGroup]="loginForm">
+              <ion-item color="space" no-padding>
+                <ion-label floating>Login</ion-label>
+                <ion-input formControlName="login" name="username" type="text" text-center></ion-input>
+              </ion-item>
+              <ion-item color="space" no-padding>
+                <ion-label floating>Senha</ion-label>
+                <ion-input formControlName="password" name="password" type="password" text-center></ion-input>
+              </ion-item>
+              <button margin-top ion-button block type="submit" color="agata">
+                Entrar
+              </button>
+            </form>
+            
+            <button ion-button block color=agata outline (click)="register()">
+              Sem conta? Registre-se agora
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>
