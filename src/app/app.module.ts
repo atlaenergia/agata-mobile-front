@@ -4,10 +4,16 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LoginPageModule } from '../pages/login/login.module';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { HttpModule} from '@angular/http';
+import { RegisterPageModule } from '../pages/register/register.module';
+import { RegisterPage } from '../pages/register/register';
+import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 
 @NgModule({
   declarations: [
@@ -16,19 +22,31 @@ import { LoginPageModule } from '../pages/login/login.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    LoginPageModule
+    IonicModule.forRoot(MyApp,{
+      platforms: {
+        ios: {
+          backButtonText: 'Voltar',
+        }
+      }
+    }),
+    LoginPageModule,
+    HttpModule,
+    HttpClientModule,
+    RegisterPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider,
+    AlertServiceProvider
   ]
 })
 export class AppModule {}

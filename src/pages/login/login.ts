@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { RegisterPage } from '../register/register';
+import { HomePage } from '../home/home';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,16 +22,27 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LoginPage {
 
   loginForm: FormGroup;
+  loading: any;
+  data: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public authService: AuthServiceProvider,
+    private toastCtrl: ToastController
   ) {
     this.loginForm = this.formBuilder.group({
-      login: ['', Validators.compose([])],
+      name: ['', Validators.compose([])],
       password: ['', Validators.compose([])]
     });
+    if(localStorage.getItem('token')) {
+      this.navCtrl.setRoot(HomePage);
+      this.authService.enableMenu(true,'authenticated');
+    } else {
+      this.authService.enableMenu(true,'unauthenticated');
+    }
   }
 
   ionViewDidLoad() {
@@ -35,6 +51,46 @@ export class LoginPage {
 
   doLogin() {
     console.log('doLogin');
+
+    this.showLoader();
+    this.authService.login(this.loginForm.value).then((result) => {
+      this.loading.dismiss();
+      console.log(result);
+      this.data = result;
+      this.authService.enableMenu(true,'authenticated');
+      this.navCtrl.setRoot(HomePage);
+    },(err) => {
+      console.log(err);
+      this.loading.dismiss();
+      this.presentToast(err);
+    })
+  }
+
+  register() {
+    console.log('register');
+    this.navCtrl.push(RegisterPage);
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Autenticando...'
+    });
+    this.loading.present();
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }
