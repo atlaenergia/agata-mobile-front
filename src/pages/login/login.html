@@ -4,6 +4,12 @@
       <ion-icon color="agata" name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click) = "help()">
+        <img style = "width: 35px;" src = "assets/imgs/Orange.png">
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -14,12 +20,12 @@
 
         <ion-row>
           <ion-col col-6 offset-3>
-            
+
             <img src="assets/imgs/Orange.png"/>
-            
+
           </ion-col>
         </ion-row>
-    
+
         <ion-row>
           <ion-col>
             <form (submit)="doLogin()" [formGroup]="loginForm">
@@ -35,7 +41,7 @@
                 Entrar
               </button>
             </form>
-            
+
             <button margin-top ion-button block color=agata outline (click)="register()">
               Sem conta? Registre-se agora
             </button>

@@ -1,25 +1,72 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { HomePage } from '../home/home';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @IonicPage()
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html',
+  templateUrl: 'register.html'
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  registerForm: FormGroup;
+  loading: any;
+  data: any;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public authService: AuthServiceProvider,
+    private toastCtrl: ToastController
+  ) {
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.compose([])],
+      email: ['', Validators.compose([])],
+      phone: ['', Validators.compose([])],
+      username: ['', Validators.compose([])],
+      password: ['', Validators.compose([])],
+      confirmPassword: ['', Validators.compose([])]
+    });
+    //I didn't know what do here...
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    console.log('ionViewDidLoad LoginPage');
+  }
+
+  register() {
+    console.log('doRegister');
+
+    this.showLoader();
+    console.log(this.registerForm.value);
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Autenticando...'
+    });
+    this.loading.present();
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }
