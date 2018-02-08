@@ -30,11 +30,11 @@
           <ion-col>
             <form (submit)="doLogin()" [formGroup]="loginForm">
               <ion-item color="space" no-padding>
-                <ion-label floating>Login</ion-label>
+                <ion-label floating text-center class="atla-label">Login</ion-label>
                 <ion-input formControlName="name" name="name" type="text" text-center></ion-input>
               </ion-item>
               <ion-item color="space" no-padding>
-                <ion-label floating>Senha</ion-label>
+                <ion-label floating text-center class="atla-label">Senha</ion-label>
                 <ion-input formControlName="password" name="password" type="password" text-center></ion-input>
               </ion-item>
               <button margin-top ion-button block type="submit" color="agata">
