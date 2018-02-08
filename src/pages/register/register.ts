@@ -5,6 +5,7 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,7 @@ export class RegisterPage {
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
     public authService: AuthServiceProvider,
+    public alertCtrl: AlertController,
     private toastCtrl: ToastController
   ) {
     this.registerForm = this.formBuilder.group({
@@ -45,6 +47,15 @@ export class RegisterPage {
 
     this.showLoader();
     console.log(this.registerForm.value);
+  }
+  help() {
+    console.log('help');
+    let alert = this.alertCtrl.create({
+      title: 'Atla Ajuda',
+      subTitle: '',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   showLoader(){

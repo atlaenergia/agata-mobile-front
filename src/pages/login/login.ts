@@ -6,6 +6,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -31,6 +32,7 @@ export class LoginPage {
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
     public authService: AuthServiceProvider,
+    public alertCtrl: AlertController,
     private toastCtrl: ToastController
   ) {
     this.loginForm = this.formBuilder.group({
@@ -69,6 +71,16 @@ export class LoginPage {
   register() {
     console.log('register');
     this.navCtrl.push(RegisterPage);
+  }
+
+  help() {
+    console.log('help');
+    let alert = this.alertCtrl.create({
+      title: 'Atla Ajuda',
+      subTitle: '',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   showLoader(){
