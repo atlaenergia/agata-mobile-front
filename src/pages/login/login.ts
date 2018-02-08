@@ -81,6 +81,7 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
+
   }
 
   showLoader(){

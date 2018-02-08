@@ -13,6 +13,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpModule} from '@angular/http';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { RegisterPage } from '../pages/register/register';
+// import { HelpPage } from '../pages/help/help';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     HttpModule,
     HttpClientModule,
     RegisterPageModule
+    // HelpPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,6 +42,7 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     HomePage,
     LoginPage,
     RegisterPage
+    // HelpPage    
   ],
   providers: [
     StatusBar,
