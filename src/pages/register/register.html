@@ -2,14 +2,14 @@
   <ion-navbar transparent>
 
     <button ion-button menuToggle>
-      <ion-icon color = "agata" name = "menu"></ion-icon>
+      <ion-icon color="agata" name="menu"></ion-icon>
     </button>
 
     <ion-title> Cadastre-se </ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only (click) = "help()">
-        <img style = "width: 35px;" src = "assets/imgs/Orange.png">
+      <button ion-button icon-only (click)="help()">
+        <img style="width: 35px;" src="assets/imgs/Orange.png">
       </button>
     </ion-buttons>
 
@@ -20,52 +20,47 @@
 <ion-content padding>
   <ion-grid>
 
-      <ion-row>
-        <ion-col col-6 offset-3>
-          <img src = "assets/imgs/Orange.png">
-        </ion-col>
-      </ion-row>
+    <ion-row>
+      <ion-col>
+        <form (submit)="register()" [formGroup]="registerForm">
 
-      <ion-row>
-        <ion-col>
-          <form (submit) = "register()" [formGroup] = "registerForm">
-            <ion-item color = "space" no-padding>
-              <ion-label floating> Nome Completo </ion-label>
-              <ion-input formControlName = "name" name = "name" type = "text"></ion-input>
-            </ion-item>
+          <ion-item color="space" no-padding>
+            <ion-label floating> Nome de usuário </ion-label>
+            <ion-input formControlName="username" name="username" type="text"></ion-input>
+          </ion-item>
 
-            <ion-item color = "space" no-padding>
-              <ion-label floating> E-mail </ion-label>
-              <ion-input formControlName = "email" name = "email" type = "text"></ion-input>
-            </ion-item>
+          <ion-item color="space" no-padding>
+            <ion-label floating> Nova senha </ion-label>
+            <ion-input formControlName="password" name="password" type="password"></ion-input>
+          </ion-item>
 
-            <ion-item color = "space" no-padding col-8>
-              <ion-label floating> Telefone </ion-label>
-              <ion-input formControlName = "phone" name = "phone" type = "text"></ion-input>
-            </ion-item>
+          <ion-item color="space" no-padding>
+            <ion-label floating> Confirmar senha </ion-label>
+            <ion-input formControlName="confirmPassword" name="confirmPassword" type="password"></ion-input>
+          </ion-item>
 
-            <ion-item color = "space" no-padding>
-              <ion-label floating> Usuário </ion-label>
-              <ion-input formControlName = "username" name = "username" type = "text"></ion-input>
-            </ion-item>
+          <ion-item color="space" no-padding>
+            <ion-label floating> Nome completo </ion-label>
+            <ion-input formControlName="name" name="name" type="text"></ion-input>
+          </ion-item>
 
-            <ion-item color = "space" no-padding>
-              <ion-label floating> Senha </ion-label>
-              <ion-input formControlName = "password" name = "password" type = "password"></ion-input>
-            </ion-item>
+          <ion-item color="space" no-padding>
+            <ion-label floating> E-mail </ion-label>
+            <ion-input formControlName="email" name="email" type="text"></ion-input>
+          </ion-item>
 
-            <ion-item color = "space" no-padding>
-              <ion-label floating> Confirmar Senha </ion-label>
-              <ion-input formControlName = "confirmPassword" name = "confirmPassword" type = "password"></ion-input>
-            </ion-item>
+          <ion-item color="space" no-padding>
+            <ion-label floating> Telefone </ion-label>
+            <ion-input formControlName="phone" name="phone" type="text"></ion-input>
+          </ion-item>
 
-            <br>
-            <button margin-top ion-button block type = "submit" color = "agata">
-              Cadastrar
-            </button>
-          </form>
-        </ion-col>
-      </ion-row>
+          <br>
+          <button margin-top ion-button block type="submit" color="agata">
+            Cadastrar
+          </button>
+        </form>
+      </ion-col>
+    </ion-row>
 
   </ion-grid>
 </ion-content>
