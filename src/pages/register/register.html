@@ -14,6 +14,19 @@
     </ion-buttons>
 
   </ion-navbar>
+  <ion-toolbar no-border-top transparent>
+    <ion-segment [(ngModel)]="step">
+      <ion-segment-button [disabled]="status" value="person">
+        Pessoa
+      </ion-segment-button>
+      <ion-segment-button value="device">
+        Dispositivos
+      </ion-segment-button>
+      <ion-segment-button value="setup">
+        Configuração
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 

@@ -17,6 +17,7 @@ export class RegisterPage {
   registerForm: FormGroup;
   loading: any;
   data: any;
+  status: boolean = false;
 
   constructor(
     public navCtrl: NavController,
