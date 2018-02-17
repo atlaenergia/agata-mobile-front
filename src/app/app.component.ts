@@ -7,12 +7,15 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
+import { DevicesPage } from '../pages/devices/devices';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+
+  nome: string = "Savio"
   rootPage:any = LoginPage;
   publicPages: Array<{title: string, component: any, alert?:any, icon: string}>;
   privatePages: Array<{title: string, component: any, icon: string}>;
@@ -24,7 +27,9 @@ export class MyApp {
     public authService: AuthServiceProvider,
     public alertService: AlertServiceProvider
   ) {
-
+    this.privatePages = [
+      {title: 'Dispositivos', component: DevicesPage, icon:'outlet'}
+    ]
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -36,6 +41,10 @@ export class MyApp {
 
   ionOpen() {
     console.log('ionOpen');
+  }
+
+  openPage(page) {
+    this.nav.push(page.component);
   }
 
   logout() {

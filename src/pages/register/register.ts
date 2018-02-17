@@ -34,7 +34,7 @@ export class RegisterPage {
       phone: ['', Validators.compose([])],
       username: ['', Validators.compose([])],
       password: ['', Validators.compose([])],
-      confirmPassword: ['', Validators.compose([])]
+      //confirmPassword: ['', Validators.compose([])]
     });
     //I didn't know what do here...
   }
@@ -48,6 +48,11 @@ export class RegisterPage {
 
     this.showLoader();
     console.log(this.registerForm.value);
+    this.authService.register(this.registerForm.value).then((result) => {
+      this.loading.dismiss();
+    },(err) => {
+      this.loading.dismiss();
+    });
   }
   help() {
     console.log('help');

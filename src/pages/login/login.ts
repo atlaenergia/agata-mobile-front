@@ -36,7 +36,7 @@ export class LoginPage {
     private toastCtrl: ToastController
   ) {
     this.loginForm = this.formBuilder.group({
-      name: ['', Validators.compose([])],
+      username: ['', Validators.compose([])],
       password: ['', Validators.compose([])]
     });
     if(localStorage.getItem('token')) {

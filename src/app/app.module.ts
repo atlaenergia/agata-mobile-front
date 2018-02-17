@@ -18,6 +18,8 @@ import { ConnectionPage } from '../pages/connection/connection';
 
 // import { HelpPage } from '../pages/help/help';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
+import { DevicesPageModule } from '../pages/devices/devices.module';
+import { DevicesPage } from '../pages/devices/devices';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     HttpModule,
     HttpClientModule,
     RegisterPageModule,
-    ConnectionPageModule
+    ConnectionPageModule,
+    DevicesPageModule
     // HelpPageModule
   ],
   bootstrap: [IonicApp],
@@ -46,7 +49,8 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     HomePage,
     LoginPage,
     RegisterPage,
-    ConnectionPage
+    ConnectionPage,
+    DevicesPage
     // HelpPage
   ],
   providers: [

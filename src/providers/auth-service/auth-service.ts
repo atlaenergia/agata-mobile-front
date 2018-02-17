@@ -23,39 +23,50 @@ export class AuthServiceProvider {
 
   login(credentials) {
     return new Promise((resolve, reject) => {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
 
-        this.http.post(apiUrl+'/authenticate', JSON.stringify(credentials), {headers: headers})
-          .subscribe(res => {
-            if(res.json().success) {
-              localStorage.setItem('token',res.json().token);
-              resolve();
-            } else {
-              console.log('err: ' + res.json().msg);
-              reject(res.json().msg);
-            }
-            resolve(res.json());
-          }, (err) => {
-            reject(err);
-          });
+      this.http.post(apiUrl + '/signin', JSON.stringify(credentials), { headers: headers })
+        .subscribe(res => {
+          if (res.json().success) {
+            localStorage.setItem('token', res.json().token);
+            resolve();
+          } else {
+            console.log('err: ' + res.json().msg);
+            reject(res.json().msg);
+          }
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
-  logout(){
+  register(credentials) {
     return new Promise((resolve, reject) => {
-        let headers = new Headers();
-        headers.append('Authorization', localStorage.getItem('token'));
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
 
-        this.http.get(apiUrl+'/memberinfo', {headers: headers})
-          .subscribe(res => {
-            console.log(res.json());
-            localStorage.clear();
-            resolve(res.json());
-          }, (err) => {
-            console.log(err);
-            reject(err);
-          });
+      this.http.post(apiUrl + '/signup', JSON.stringify(credentials), { headers: headers })
+        .subscribe(res => {
+          console.log(res.json());
+          if (res.json().success) {
+            resolve();
+          } else {
+            console.log('err: ' + res.json().msg);
+            reject(res.json().msg);
+          }
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  logout() {
+    return new Promise((resolve, reject) => {
+      localStorage.clear();
+      resolve();
     });
   }
 
