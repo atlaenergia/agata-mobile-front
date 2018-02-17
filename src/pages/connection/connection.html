@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon color = "agata" name = "menu"></ion-icon>
+    </button>
+
+    <ion-title> Conexão Wi-fi </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click) = "help()">
+        <img style = "width: 30px;" src = "assets/imgs/Orange.png">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form (submit) = "doConnection()" [formGroup] = "connectionForm">
+          <ion-item color = "space" no-padding>
+            <ion-label floating text-center class = "atla-label"> Nome da Rede </ion-label>
+            <ion-input formControlName = "name" name = "name" type = "text" text-center></ion-input>
+          </ion-item>
+          <ion-item color = "space" no-padding>
+            <ion-label floating text-center class = "atla-label"> Senha da Rede </ion-label>
+            <ion-input formControlName = "password" name = "password" type = "password" text-center></ion-input>
+          </ion-item>
+          <button margin-top ion-button block type = "submit" color = "agata">
+            Conectar
+          </button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

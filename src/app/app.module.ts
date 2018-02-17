@@ -13,6 +13,9 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpModule} from '@angular/http';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { RegisterPage } from '../pages/register/register';
+import { ConnectionPageModule } from '../pages/connection/connection.module';
+import { ConnectionPage } from '../pages/connection/connection';
+
 // import { HelpPage } from '../pages/help/help';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 
@@ -33,7 +36,8 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     LoginPageModule,
     HttpModule,
     HttpClientModule,
-    RegisterPageModule
+    RegisterPageModule,
+    ConnectionPageModule
     // HelpPageModule
   ],
   bootstrap: [IonicApp],
@@ -41,8 +45,9 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
-    // HelpPage    
+    RegisterPage,
+    ConnectionPage
+    // HelpPage
   ],
   providers: [
     StatusBar,
