@@ -18,6 +18,7 @@ export class RegisterPage {
   loading: any;
   data: any;
   status: boolean = false;
+  step = 'person';
 
   constructor(
     public navCtrl: NavController,
@@ -34,7 +35,7 @@ export class RegisterPage {
       phone: ['', Validators.compose([])],
       username: ['', Validators.compose([])],
       password: ['', Validators.compose([])],
-      //confirmPassword: ['', Validators.compose([])]
+      confirmPassword: ['', Validators.compose([])]
     });
     //I didn't know what do here...
   }

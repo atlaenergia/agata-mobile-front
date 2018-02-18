@@ -20,6 +20,8 @@ import { ConnectionPage } from '../pages/connection/connection';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 import { DevicesPageModule } from '../pages/devices/devices.module';
 import { DevicesPage } from '../pages/devices/devices';
+import { Network } from '@ionic-native/network';
+import { Hotspot } from '@ionic-native/hotspot';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { DevicesPage } from '../pages/devices/devices';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    AlertServiceProvider
+    AlertServiceProvider,
+    Network,
+    Hotspot
   ]
 })
 export class AppModule {}

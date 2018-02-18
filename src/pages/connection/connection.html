@@ -21,8 +21,12 @@
       <ion-col>
         <form (submit) = "doConnection()" [formGroup] = "connectionForm">
           <ion-item color = "space" no-padding>
-            <ion-label floating text-center class = "atla-label"> Nome da Rede </ion-label>
+            <ion-label floating text-center class = "atla-label"> Chave da Rede </ion-label>
             <ion-input formControlName = "name" name = "name" type = "text" text-center></ion-input>
+          </ion-item>
+          <ion-item color = "space" no-padding>
+            <ion-label floating text-center class = "atla-label"> Nome da Rede </ion-label>
+            <ion-input formControlName = "secret" name = "secret" type = "text" text-center></ion-input>
           </ion-item>
           <ion-item color = "space" no-padding>
             <ion-label floating text-center class = "atla-label"> Senha da Rede </ion-label>

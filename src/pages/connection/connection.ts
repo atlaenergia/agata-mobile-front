@@ -29,7 +29,8 @@ export class ConnectionPage {
   ) {
     this.connectionForm = this.formBuilder.group({
       name: ['', Validators.compose([])],
-      password: ['', Validators.compose([])]
+      password: ['', Validators.compose([])],
+      secret: ['', Validators.compose([])]
     });
   }
 
